@@ -13,8 +13,8 @@ steps:
     terraform version
   displayName: 'Install Terraform'
 
-- script: terraform init-reconfiguration
-  displayName: 'Terraform Init'
+- script: terraform init -reconfigure
+  displayName: 'terraform init -reconfigure'
 
 - script: terraform validate
   displayName: 'Terraform Validate'
