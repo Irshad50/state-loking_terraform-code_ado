@@ -13,17 +13,14 @@ steps:
     terraform version
   displayName: 'Install Terraform'
 
-- script: terraform init -reconfigure
-  displayName: 'terraform init -reconfigure'
-
-- script: terraform validate
-  displayName: 'Terraform Validate'
-
 - task: AzureCLI@2
-  displayName: 'Terraform Plan'
+  displayName: 'Terraform Init Validate Plan Apply'
   inputs:
     azureSubscription: 'azure-sp-conn'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
+      terraform init -reconfigure
+      terraform validate
       terraform plan
+      terraform apply -auto-approve
